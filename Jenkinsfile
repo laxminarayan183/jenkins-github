@@ -20,7 +20,7 @@ pipeline {
               '''
             }
         }
-        
+        }
         // Step 3: Deploy the index.html file
         stage('Deploy HTML File') {
             steps {
@@ -30,7 +30,7 @@ pipeline {
                 '''
             }
         }
-    }
+    
 
 }
 }
