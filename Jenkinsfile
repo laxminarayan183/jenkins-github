@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        SUDO_PASS = credentials('root-pass')  // Jenkins credential (type: secret text)
-    }
     stages {
           // Step 1: Clone the Repository
         stage('Clone Repository') {
@@ -14,8 +11,8 @@ pipeline {
      // Step 2: Install apache
         stage('apache install') {
             steps {
-                sh '''
-                sh "echo $SUDO_PASS | sudo -S apt update"
+               withCredentials([string(credentialsId: 'root-pass', variable: 'SUDO_PASS')]) {
+                    sh '''echo "$SUDO_PASS" | sudo -S apt update'
                  sudo apt update
                  sudo apt install apache2 -y
                  rm /var/www/html/index.html
@@ -36,6 +33,7 @@ pipeline {
     }
 
 }
+
 
 
 
