@@ -6,7 +6,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Pull the latest code from the GitHub repository 
-                 gitbranch:'main',url:'https://github.com/abcd/jenkinsRepo.git'
+                 gitbranch:'main',url:'https://github.com/laxminarayan183/jenkins-github.git'
             }
         }
      // Step 2: Install apache
@@ -31,4 +31,5 @@ pipeline {
             }
         }
     }
+
 }
