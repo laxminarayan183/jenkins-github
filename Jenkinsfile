@@ -12,12 +12,12 @@ pipeline {
         stage('apache install') {
             steps {
                withCredentials([string(credentialsId: 'root-pass', variable: 'SUDO_PASS')]) {
-                    sh '''echo "$SUDO_PASS" | sudo -S apt update'
-                 sudo apt update
-                 sudo apt install apache2 -y
-                 rm /var/www/html/index.html
-                 chown -R jenkins:jenkins /var/www/html/index.html
-              '''
+                  sh '''
+                    echo "$SUDO_PASS" | sudo -S apt update && \
+                    sudo apt install apache2 -y && \
+                    sudo rm /var/www/html/index.html && \
+                    sudo chown -R jenkins:jenkins /var/www/html
+                '''
             }
         }
         }
@@ -34,6 +34,7 @@ pipeline {
 
 }
 }
+
 
 
 
