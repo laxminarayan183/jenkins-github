@@ -13,8 +13,8 @@ pipeline {
         stage('apache install') {
             steps {
                 sh '''
-                 sudo apt update
-                 sudo apt install apache2 -y
+                 sudo -S apt update
+                 sudo -S apt install apache2 -y
                  rm /var/www/html/index.html
                  chown -R jenkins:jenkins /var/www/html/index.html
               '''
@@ -33,4 +33,5 @@ pipeline {
     }
 
 }
+
 
